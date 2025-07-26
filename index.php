@@ -113,7 +113,7 @@ if ($path == '/') {
                     $('#question-list').empty();
                     questions.forEach((q, i) => {
                         $('#question-list').append(`
-                        <li id="q-${i}" class="flex items-center py-0.5 gap-3 text-black">
+                        <li id="q-${i}" class="flex py-0.5 gap-3 text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 shrink-0 dot"><circle cx="12.1" cy="12.1" r="1"/></svg>
                             ${$('<div>').text(q).html()}
                             <button class="cursor-pointer focus:!ring-red-700 delete-btn ml-auto p-2 rounded-lg bg-red-700 text-white text-red-500" data-index="${i}">
@@ -167,7 +167,7 @@ if ($path == '/') {
 
                     questions.forEach((q, i) => {
                         $('#progress-list').append(`
-                    <li id="q-${i}" class="flex items-center py-0.5 gap-3 text-black">
+                    <li id="q-${i}" class="flex py-0.5 gap-3 text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 shrink-0 dot"><circle cx="12.1" cy="12.1" r="1"/></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="loader size-6 shrink-0 animate-spin hidden"><path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0"/><path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7"/><path d="M21.82 10.1a9.93 9.93 0 0 1 0 3.8"/><path d="M20.29 17.6a9.95 9.95 0 0 1-2.7 2.69"/><path d="M13.9 21.82a9.94 9.94 0 0 1-3.8 0"/><path d="M6.4 20.29a9.95 9.95 0 0 1-2.69-2.7"/><path d="M2.18 13.9a9.93 9.93 0 0 1 0-3.8"/><path d="M3.71 6.4a9.95 9.95 0 0 1 2.7-2.69"/><circle cx="12" cy="12" r="1"/></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="checkmark size-6 shrink-0 hidden"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
