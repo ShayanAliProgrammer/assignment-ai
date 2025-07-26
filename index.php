@@ -101,7 +101,7 @@ if ($path == '/') {
         <link rel="stylesheet" href="/fonts/Literata_Complete/css/literata.css">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <style>
             * {
                 font-family: 'GeneralSans-Medium', sans-serif;
@@ -166,7 +166,7 @@ if ($path == '/') {
             </div>
         </div>
 
-        <script async>
+        <script>
             document.addEventListener('DOMContentLoaded', () => {
                 $('body').removeClass('overflow-hidden');
                 $('#main-content').removeClass('hidden');
@@ -174,7 +174,7 @@ if ($path == '/') {
             });
         </script>
 
-        <script async>
+        <script>
             let questions = [];
 
             function renderQuestions() {
