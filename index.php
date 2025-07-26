@@ -256,8 +256,7 @@ if ($path == '/') {
     </html>
     <?php
     $content = ob_get_contents();
-    ob_end_clean(); // Use this instead of ob_clean() to fully end buffering
-    ob_end_flush(); // Use this instead of ob_clean() to fully end buffering
+    ob_end_clean();
     echo minify($content);
 } elseif ($path == '/assignment/progress') {
     header('Content-Type: text/event-stream');
