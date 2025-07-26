@@ -96,8 +96,9 @@ if ($path == '/') {
             <?= minify(str_replace('../', '/fonts/Literata_Complete/', file_get_contents(__DIR__ . '/public/fonts/Literata_Complete/css/literata.css'))) ?>
         </style>
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script defer>
+            <?= minify(file_get_contents(__DIR__ . '/public/js/jquery.min.js')) ?>
+        </script>
 
         <script defer>
             document.addEventListener('DOMContentLoaded', () => {
