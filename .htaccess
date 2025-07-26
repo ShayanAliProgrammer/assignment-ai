@@ -8,12 +8,6 @@ RewriteRule ^(\.git(ignore)?|\.env(\..*)?|\.env)$ - [R=404,L]
 RewriteRule ^(composer\.json|package\.json|.*\.lock|.*\.md)$ - [R=404,L]
 
 ########################################
-## ✅ Serve static assets from /public
-########################################
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(css|fonts|images)/(.*)$ public/$1/$2 [L]
-
-########################################
 ## 🔁 Route all other requests to index.php
 ########################################
 RewriteCond %{REQUEST_FILENAME} !-f

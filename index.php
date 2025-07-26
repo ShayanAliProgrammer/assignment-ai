@@ -8,15 +8,54 @@ function cache()
     header('Cache-Control: max-age=604800', true);
 }
 
+function serve_file($file, $mime = null)
+{
+    if (!file_exists($file)) {
+        http_response_code(404);
+        echo 'Not Found';
+        exit;
+    }
+
+    cache();
+
+    // Basic MIME type detection if not passed
+    if (!$mime) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $file);
+        finfo_close($finfo);
+    }
+
+    header("Content-Type: $mime");
+    header('Content-Length: ' . filesize($file));
+    readfile($file);
+    exit;
+}
+
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-header_remove('server');
+header_remove('Server');
 header_remove('X-Powered-By');
-
 header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
+
+if (preg_match('#^/css/[^/]+\.css$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path, 'text/css');
+}
+
+if (preg_match('#^/fonts/[^/]+/css/[^/]+\.css$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path, 'text/css');
+}
+
+if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path);
+}
+
+if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
+    serve_file(__DIR__ . '/public' . $path);
+}
+
 
 if ($path == '/') {
     cache();

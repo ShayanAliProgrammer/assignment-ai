@@ -6,18 +6,6 @@
   },
   "routes": [
     {
-      "src": "/css/(.*)",
-      "dest": "/public/css/$1"
-    },
-    {
-      "src": "/fonts/(.*)",
-      "dest": "/public/fonts/$1"
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/public/images/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
