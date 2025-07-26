@@ -91,19 +91,17 @@ if ($path == '/') {
         <link rel="prefetch" as="style" href="/images/background.png">
         <link rel="prefetch" as="style" href="/images/primary-texture.png">
 
-
         <link rel="prefetch" as="style" href="/css/styles.css">
         <link rel="stylesheet" href="/css/styles.css">
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-        <link rel="prefetch" as="style" href="/fonts/Literata_Complete/css/literata.css">
         <link rel="prefetch" as="style" href="/fonts/GeneralSans_Complete/css/general-sans.css">
-
-        <link rel="stylesheet" href="/fonts/Literata_Complete/css/literata.css">
         <link rel="stylesheet" href="/fonts/GeneralSans_Complete/css/general-sans.css">
 
+        <link rel="prefetch" as="style" href="/fonts/Literata_Complete/css/literata.css">
+        <link rel="stylesheet" href="/fonts/Literata_Complete/css/literata.css">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <style>
             * {
                 font-family: 'GeneralSans-Medium', sans-serif;
