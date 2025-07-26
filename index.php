@@ -80,6 +80,19 @@ if ($path == '/') {
         <meta name="description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI." />
         <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
 
+        <meta property="twitter:title" content="AI Assignment Generator">
+        <meta property="twitter:description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI.">
+        <meta property="twitter:image" content="/images/og-image.png">
+        <meta property="twitter:card" content="summary_large_image">
+
+
+        <meta property="og:image" content="/images/og-image.png">
+        <meta property="og:site_name" content="AI Assignment Generator">
+        <meta property="og:title" content="AI Assignment Generator">
+        <meta property="og:description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI." />
+        <meta property="og:url" content="<?= $_ENV['APP_BASE_URL'] . $path ?>">
+
+
         <!-- Prefetch Images -->
         <link rel="prefetch" as="style" href="/images/background.png">
         <link rel="prefetch" as="style" href="/images/primary-texture.png">
