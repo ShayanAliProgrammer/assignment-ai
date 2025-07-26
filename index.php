@@ -9,7 +9,7 @@ function cache()
 }
 function minify($content)
 {
-    return preg_replace(
+    return trim(preg_replace(
         [
             '/ {2,}/',
             '/<!--.*?-->|\t|(?:\r?\n[ \t]*)+/s',
@@ -19,10 +19,10 @@ function minify($content)
             ''
         ],
         $content
-    );
+    ));
 }
 
-function serve_file($file, $mime = null)
+function serve_file($file, $mime = null, $minify = false)
 {
     if (!file_exists($file)) {
         http_response_code(404);
@@ -42,7 +42,7 @@ function serve_file($file, $mime = null)
     header("Content-Type: $mime");
     header('Content-Length: ' . filesize($file));
     $output = file_get_contents($file);
-    echo $mime == 'text/css' ? minify($output) : $output;
+    echo $minify ? minify($output) : $output;
     exit;
 }
 
@@ -54,25 +54,17 @@ header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
+header('Referrer-Policy: strict-origin-when-cross-origin');
 
 if (preg_match('#^/js/[^/]+\.js$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'text/javascript');
-}
-
-if (preg_match('#^/css/[^/]+\.css$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'text/css');
-}
-
-if (preg_match('#^/fonts/[^/]+/css/[^/]+\.css$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'text/css');
-}
-
-
-if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path, 'text/javascript', minify: true);
+} elseif (preg_match('#^/css/[^/]+\.css$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path, 'text/css', minify: true);
+} else if (preg_match('#^/fonts/[^/]+/css/[^/]+\.css$#', $path)) {
+    serve_file(__DIR__ . '/public' . $path, 'text/css', minify: true);
+} else if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
     serve_file(__DIR__ . '/public' . $path);
-}
-
-if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
+} else if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
     serve_file(__DIR__ . '/public' . $path);
 }
 
@@ -90,7 +82,7 @@ if ($path == '/') {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AI Assignment Generator</title>
         <meta name="description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI." />
-        <link rel="canonical" href="http://localhost:5000<?= htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
+        <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
 
         <!-- Prefetch Images -->
         <link rel="prefetch" as="style" href="/images/background.png">
@@ -410,11 +402,15 @@ if ($path == '/') {
     }
     exit;
 } elseif ($path == '/robots.txt') {
+    require_once __DIR__ . '/load-env.php';
+
     header('content-type: text/plain');
-    echo file_get_contents(__DIR__ . '/robots.txt');
+    echo str_replace('{base_url}', $_ENV['APP_BASE_URL'], file_get_contents(__DIR__ . '/robots.txt'));
 } elseif ($path == '/sitemap.xml') {
+    require_once __DIR__ . '/load-env.php';
+
     header('content-type: text/xml');
-    echo file_get_contents(__DIR__ . '/sitemap.xml');
+    echo str_replace('{base_url}', $_ENV['APP_BASE_URL'], file_get_contents(__DIR__ . '/sitemap.xml'));
 } else {
     http_response_code(404);
     header('Content-Type: text/plain; charset=utf-8');

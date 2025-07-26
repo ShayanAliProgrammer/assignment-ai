@@ -5,13 +5,11 @@ importScripts(
 if (workbox) {
   console.log("✅ Workbox loaded");
 
-  workbox.skipWaiting();
+  self.skipWaiting();
   workbox.core.clientsClaim();
 
-  // Precache manifest (optional)
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST || []);
 
-  // 📦 Cache CSS and JS - stale while revalidate
   workbox.routing.registerRoute(
     ({ request }) =>
       request.destination === "style" || request.destination === "script",
@@ -26,7 +24,6 @@ if (workbox) {
     })
   );
 
-  // 🖼️ Cache images - cache first
   workbox.routing.registerRoute(
     ({ request }) => request.destination === "image",
     new workbox.strategies.CacheFirst({
@@ -40,7 +37,6 @@ if (workbox) {
     })
   );
 
-  // 📄 Cache only specific HTML pages
   const htmlPagesToCache = ["/"];
 
   workbox.routing.registerRoute(
@@ -55,7 +51,7 @@ if (workbox) {
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 10,
-          maxAgeSeconds: 24 * 60 * 60, // 1 day
+          maxAgeSeconds: 24 * 60 * 60,
         }),
       ],
     })

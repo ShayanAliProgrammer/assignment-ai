@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://localhost:5000/sitemap.xml
+Sitemap: {base_url}/sitemap.xml

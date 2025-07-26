@@ -3,12 +3,20 @@ RewriteEngine On
 ########################################
 ## 🚫 Block sensitive files/folders
 ########################################
-RewriteRule ^(node_modules|vendor)(/|$) - [R=404,L]
-RewriteRule ^(\.git(ignore)?|\.env(\..*)?|\.env)$ - [R=404,L]
-RewriteRule ^(composer\.json|package\.json|.*\.lock|.*\.md)$ - [R=404,L]
+# Block vendor and node_modules (common sensitive dirs)
+RewriteRule ^(?:node_modules|vendor)(?:/|$) - [R=404,L]
+
+# Block env, git, config, and lock files
+RewriteRule ^(?:\.git(?:ignore)?|\.env(?:\..*)?|\.env)$ - [R=404,L]
+RewriteRule ^(?:composer\.json|package\.json|.*\.lock|.*\.md)$ - [R=404,L]
 
 ########################################
-## 🔁 Route all other requests to index.php
+## 📜 Serve sitemap or robots from PHP (optional)
+########################################
+RewriteRule ^(?:sitemap\.xml|robots\.txt)$ index.php [QSA,L]
+
+########################################
+## 🔁 Route all non-file/folder requests to index.php
 ########################################
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
