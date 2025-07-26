@@ -22,7 +22,7 @@ function minify($content)
     ));
 }
 
-function serve_file($file, $mime = null, $minify = false)
+function serve_file($file, $mime = null)
 {
     if (!file_exists($file)) {
         http_response_code(404);
@@ -39,8 +39,9 @@ function serve_file($file, $mime = null, $minify = false)
 
     header("Content-Type: $mime");
     header('Content-Length: ' . filesize($file));
+
     $output = file_get_contents($file);
-    echo $minify ? minify($output) : $output;
+    echo $output;
     exit;
 }
 
@@ -56,10 +57,6 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
 
 if (preg_match('#^/js/[^/]+\.js$#', $path)) {
     serve_file(__DIR__ . '/public' . $path, 'text/javascript', minify: true);
-} elseif (preg_match('#^/css/[^/]+\.css$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'text/css', minify: true);
-} else if (preg_match('#^/fonts/[^/]+/css/[^/]+\.css$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'text/css', minify: true);
 } else if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
     serve_file(__DIR__ . '/public' . $path);
 } else if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
@@ -87,14 +84,17 @@ if ($path == '/') {
         <link rel="prefetch" as="style" href="/images/background.png">
         <link rel="prefetch" as="style" href="/images/primary-texture.png">
 
-        <link rel="prefetch" as="style" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/styles.css">
+        <style>
+            <?= minify(file_get_contents(__DIR__ . '/public/css/styles.css')) ?>
+        </style>
 
-        <link rel="prefetch" as="style" href="/fonts/GeneralSans_Complete/css/general-sans.css">
-        <link rel="stylesheet" href="/fonts/GeneralSans_Complete/css/general-sans.css">
+        <style>
+            <?= minify(str_replace('../', '/fonts/GeneralSans_Complete/', file_get_contents(__DIR__ . '/public/fonts/GeneralSans_Complete/css/general-sans.css'))) ?>
+        </style>
 
-        <link rel="prefetch" as="style" href="/fonts/Literata_Complete/css/literata.css">
-        <link rel="stylesheet" href="/fonts/Literata_Complete/css/literata.css">
+        <style>
+            <?= minify(str_replace('../', '/fonts/Literata_Complete/', file_get_contents(__DIR__ . '/public/fonts/Literata_Complete/css/literata.css'))) ?>
+        </style>
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
