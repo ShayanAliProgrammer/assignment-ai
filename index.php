@@ -7,6 +7,20 @@ function cache()
     // Cache for 7 days
     header('Cache-Control: max-age=604800', true);
 }
+function minify($content)
+{
+    return preg_replace(
+        [
+            '/ {2,}/',
+            '/<!--.*?-->|\t|(?:\r?\n[ \t]*)+/s',
+        ],
+        [
+            ' ',
+            ''
+        ],
+        $content
+    );
+}
 
 function serve_file($file, $mime = null)
 {
@@ -27,7 +41,8 @@ function serve_file($file, $mime = null)
 
     header("Content-Type: $mime");
     header('Content-Length: ' . filesize($file));
-    readfile($file);
+    $output = file_get_contents($file);
+    echo $mime == 'text/css' ? minify($output) : $output;
     exit;
 }
 
@@ -59,21 +74,6 @@ if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
 
 if ($path == '/') {
     cache();
-
-    function minify($content)
-    {
-        return preg_replace(
-            [
-                '/ {2,}/',
-                '/<!--.*?-->|\t|(?:\r?\n[ \t]*)+/s',
-            ],
-            [
-                ' ',
-                ''
-            ],
-            $content
-        );
-    }
 
     ob_start();
 ?>
