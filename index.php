@@ -166,16 +166,15 @@ if ($path == '/') {
             </div>
         </div>
 
-        <script>
+        <script async>
             document.addEventListener('DOMContentLoaded', () => {
                 $('body').removeClass('overflow-hidden');
                 $('#main-content').removeClass('hidden');
                 $('#screen-loader').remove();
-            })
+            });
         </script>
 
-
-        <script>
+        <script async>
             let questions = [];
 
             function renderQuestions() {
