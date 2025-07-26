@@ -298,10 +298,8 @@ if ($path == '/') {
     ob_end_clean();
     echo minify($content);
 } elseif ($path == '/assignment/progress') {
-    while (ob_get_level()) ob_end_clean(); // Kill all output buffers
     header('Content-Type: text/event-stream');
     header('Cache-Control: no-cache');
-    header('X-Accel-Buffering: no'); // For NGINX
     header('Connection: keep-alive');
 
     require_once __DIR__ . '/load-env.php';
