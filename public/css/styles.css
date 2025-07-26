@@ -669,6 +669,13 @@ video {
   height: 1.5rem;
 }
 
+.size-max {
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
