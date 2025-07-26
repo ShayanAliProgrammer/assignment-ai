@@ -34,9 +34,7 @@ function serve_file($file, $mime = null, $minify = false)
 
     // Basic MIME type detection if not passed
     if (!$mime) {
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mime = finfo_file($finfo, $file);
-        finfo_close($finfo);
+        $mime = mime_content_type($file);
     }
 
     header("Content-Type: $mime");
@@ -71,6 +69,7 @@ if (preg_match('#^/js/[^/]+\.js$#', $path)) {
 
 if ($path == '/') {
     cache();
+    require_once __DIR__ . '/load-env.php';
 
     ob_start();
 ?>
@@ -98,7 +97,7 @@ if ($path == '/') {
         <link rel="stylesheet" href="/fonts/Literata_Complete/css/literata.css">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" rel="prefetch" as="script" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script defer>
             document.addEventListener('DOMContentLoaded', () => {
@@ -116,7 +115,7 @@ if ($path == '/') {
                         <li id="q-${i}" class="flex items-center py-0.5 gap-3 text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 shrink-0 dot"><circle cx="12.1" cy="12.1" r="1"/></svg>
                             ${$('<div>').text(q).html()}
-                            <button class="cursor-pointer delete-btn ml-auto p-2 rounded-lg bg-red-700 text-white text-red-500" data-index="${i}">
+                            <button class="cursor-pointer focus:!ring-red-700 delete-btn ml-auto p-2 rounded-lg bg-red-700 text-white text-red-500" data-index="${i}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                 </button>
                                 </li>`);
