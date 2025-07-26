@@ -1,0 +1,17 @@
+@import url("../fonts/GeneralSans_Complete/css/general-sans.css");
+@import url("../fonts/Literata_Complete/css/literata.css");
+
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+input,
+textarea,
+select,
+button {
+  @apply !outline-none focus:ring-2 focus:ring-green-700 focus:!ring-offset-2 ring-offset-white;
+}
+
+::selection {
+  @apply bg-green-700 text-white;
+}
