@@ -260,10 +260,11 @@ if ($path == '/') {
     ob_end_clean();
     echo minify($content);
 } elseif ($path == '/assignment/progress') {
+    while (ob_get_level()) ob_end_clean(); // Kill all output buffers
     header('Content-Type: text/event-stream');
     header('Cache-Control: no-cache');
+    header('X-Accel-Buffering: no'); // For NGINX
     header('Connection: keep-alive');
-    header('X-Accel-Buffering: no');
 
     require_once __DIR__ . '/load-env.php';
     try {
@@ -280,10 +281,9 @@ if ($path == '/') {
         foreach ($questions as $index => $question) {
             $safeQuestion = htmlspecialchars($question, ENT_QUOTES, 'UTF-8');
             $question_number = 1 + $index;
-            ob_start();
 
             echo "event: start\ndata: {$index}\n\n";
-            ob_flush();
+            @ob_flush();
             flush();
 
             $response = $client->withV1BetaVersion()
@@ -297,13 +297,13 @@ if ($path == '/') {
             $markdown .= $response->text() . "\n\n";
 
             echo "event: done\ndata: {$index}\n\n";
-            ob_flush();
+            @ob_flush();
             flush();
         }
 
         // no temp file here!
         echo "event: complete\ndata: " . json_encode(['markdown' => base64_encode($markdown)]) . "\n\n";
-        ob_flush();
+        @ob_flush();
         flush();
     } catch (\Throwable $th) {
         echo "event: error\ndata: " . $th->getMessage();
