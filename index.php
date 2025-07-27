@@ -321,6 +321,7 @@ if ($path == '/') {
     header('Connection: keep-alive', true);
 
     require_once __DIR__ . '/load-env.php';
+    if (ob_get_level() == 0) ob_start();
     try {
 
         $client = new \GeminiAPI\Client($_ENV['GEMINI_API_KEY']);
@@ -361,6 +362,7 @@ if ($path == '/') {
     } catch (\Throwable $th) {
         echo "event: error\ndata: " . $th->getMessage();
     }
+    ob_end_flush();
     exit;
 } elseif ($path === '/assignment/docx' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $markdown = base64_decode($_POST['markdown'] ?? '');
