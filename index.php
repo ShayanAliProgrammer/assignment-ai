@@ -99,8 +99,8 @@ if ($path == '/') {
 
 
         <!-- Prefetch Images -->
-        <link rel="prefetch" as="style" href="/images/background.png">
-        <link rel="prefetch" as="style" href="/images/primary-texture.png">
+        <link rel="prefetch" as="image" href="/images/background.png">
+        <link rel="prefetch" as="image" href="/images/primary-texture.png">
 
         <style>
             <?= minify(file_get_contents(__DIR__ . '/public/css/styles.css')) ?>
