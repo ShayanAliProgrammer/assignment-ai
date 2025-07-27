@@ -69,6 +69,11 @@ if ($path == '/') {
     require_once __DIR__ . '/load-env.php';
 
     ob_start();
+
+    $app_name = 'AI Assignment Generator';
+    $og_image = '/images/og-image.png';
+    $title = 'AI Assignment Generator - Not Replacing You Indeed Doubling Your Productivity';
+    $description = 'An AI assignment generator that helps you create assignments by typing questions and generating answers using AI."';
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -77,19 +82,19 @@ if ($path == '/') {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AI Assignment Generator</title>
-        <meta name="description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI." />
-        <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
+        <meta name="description" content=" />
+        <link rel=" canonical" href="<?= $_ENV['APP_BASE_URL'] . htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
 
-        <meta property="twitter:title" content="AI Assignment Generator">
-        <meta property="twitter:description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI.">
-        <meta property="twitter:image" content="/images/og-image.png">
+        <meta property="twitter:title" content="<?= $title ?>">
+        <meta property="twitter:description" content="<?= $description ?>">
+        <meta property="twitter:image" content="<?= $og_image ?>">
         <meta property="twitter:card" content="summary_large_image">
 
 
-        <meta property="og:image" content="/images/og-image.png">
-        <meta property="og:site_name" content="AI Assignment Generator">
-        <meta property="og:title" content="AI Assignment Generator">
-        <meta property="og:description" content="An AI assignment generator that helps you create assignments by typing questions and generating answers using AI." />
+        <meta property="og:image" content="<?= $og_image ?>">
+        <meta property="og:site_name" content="<?= $app_name ?>">
+        <meta property="og:title" content="<?= $title ?>">
+        <meta property="og:description" content="<?= $description ?>" />
         <meta property="og:url" content="<?= $_ENV['APP_BASE_URL'] . $path ?>">
 
 
