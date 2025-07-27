@@ -82,8 +82,8 @@ if ($path == '/') {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AI Assignment Generator</title>
-        <meta name="description" content=" />
-        <link rel=" canonical" href="<?= $_ENV['APP_BASE_URL'] . htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" />
+        <meta name="description" content="<?= $description ?>" />
+        <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . $path ?>" />
 
         <meta property="twitter:title" content="<?= $title ?>">
         <meta property="twitter:description" content="<?= $description ?>">
