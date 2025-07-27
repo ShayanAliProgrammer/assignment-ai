@@ -273,7 +273,7 @@ if ($path == '/') {
             <div class="max-w-4xl">
                 <div class="mb-8">
                     <h1 class="text-4xl leading-relaxed font-bold text-green-700 mb-2">Assignment Questions</h1>
-                    <p class="text-gray-500">Type your questions, delete mistakes, and generate your assignment.</p>
+                    <p class="text-gray-500">Type your questions, adjust settings, and generate your assignment.</p>
                 </div>
 
                 <form id="add-form" class="flex gap-2 mb-8">
