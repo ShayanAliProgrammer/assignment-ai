@@ -337,7 +337,7 @@ if ($path == '/') {
             $question_number = 1 + $index;
 
             echo "event: start\ndata: {$index}\n\n";
-            @ob_flush();
+            ob_flush();
             flush();
 
             $response = $client->withV1BetaVersion()
@@ -351,13 +351,12 @@ if ($path == '/') {
             $markdown .= $response->text() . "\n\n";
 
             echo "event: done\ndata: {$index}\n\n";
-            @ob_flush();
+            ob_flush();
             flush();
         }
 
-        // no temp file here!
         echo "event: complete\ndata: " . json_encode(['markdown' => base64_encode($markdown)]) . "\n\n";
-        @ob_flush();
+        ob_flush();
         flush();
     } catch (\Throwable $th) {
         echo "event: error\ndata: " . $th->getMessage();
