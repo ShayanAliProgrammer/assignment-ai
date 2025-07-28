@@ -6,7 +6,6 @@
     "build": "npx tailwindcss -i ./public/css/app.css -o ./public/css/styles.css"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "3"
   },
   "dependencies": {

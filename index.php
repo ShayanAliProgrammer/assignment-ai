@@ -99,6 +99,9 @@ if ($path == '/') {
         <meta property="og:description" content="<?= $description ?>" />
         <meta property="og:url" content="<?= $_ENV['APP_BASE_URL'] . $path ?>">
 
+        <!-- Google Ads -->
+        <meta name="google-adsense-account" content="<?= $_ENV['GOOGLE_ADSENSE_ACCOUNT'] ?>">
+
 
         <!-- Prefetch Images -->
         <link rel="prefetch" as="image" href="/images/background.png">
@@ -326,6 +329,8 @@ if ($path == '/') {
     header('Content-Type: text/event-stream', replace: true);
     header('Cache-Control: no-cache', replace: true);
     header('Connection: keep-alive', replace: true);
+    ob_flush();
+    flush();
 
     require_once __DIR__ . '/load-env.php';
     try {
@@ -367,6 +372,8 @@ if ($path == '/') {
         flush();
     } catch (\Throwable $th) {
         echo "event: error\ndata: " . $th->getMessage();
+        ob_flush();
+        flush();
     }
     ob_end_flush();
     exit;
