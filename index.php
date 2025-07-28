@@ -57,9 +57,7 @@ header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
-if (preg_match('#^/js/[^/]+\.js$#', $path)) {
-    serve_file(__DIR__ . '/public' . $path, 'application/javascript', minify: true);
-} else if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
+if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
     serve_file(__DIR__ . '/public' . $path);
     exit;
 } else if (preg_match('#^/images/[^/]+\.(jpe?g|png|gif|svg|webp|ico)$#i', $path)) {
