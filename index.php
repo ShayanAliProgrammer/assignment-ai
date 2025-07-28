@@ -57,6 +57,12 @@ header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
+if ($path == '/site.webmanifest') {
+    header("content-type: application/json");
+    echo minify(file_get_contents(__DIR__ . '/public/site.webmanifest'));
+    exit;
+}
+
 if (preg_match('#^/fonts/.+/fonts/[^/]+\.(woff2?|ttf|otf|eot|svg)$#', $path)) {
     serve_file(__DIR__ . '/public' . $path);
     exit;
@@ -86,6 +92,14 @@ if ($path == '/') {
         <title>AI Assignment Generator</title>
         <meta name="description" content="<?= $description ?>" />
         <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . $path ?>" />
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+
 
         <meta property="twitter:title" content="<?= $title ?>">
         <meta property="twitter:description" content="<?= $description ?>">
