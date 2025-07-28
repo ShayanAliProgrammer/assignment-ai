@@ -89,7 +89,7 @@ if ($path == '/') {
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AI Assignment Generator</title>
+        <title><?= $title ?></title>
         <meta name="description" content="<?= $description ?>" />
         <link rel="canonical" href="<?= $_ENV['APP_BASE_URL'] . $path ?>" />
 
