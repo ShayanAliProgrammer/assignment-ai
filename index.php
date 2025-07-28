@@ -74,8 +74,8 @@ if ($path == '/') {
 
     $app_name = 'AI Assignment Generator';
     $og_image = $_ENV['APP_BASE_URL'] . '/images/og-image.png';
-    $title = 'AI Assignment Generator - Not Replacing You Indeed Doubling Your Productivity';
-    $description = 'An AI assignment generator that helps you create assignments by typing questions and generating answers using AI.';
+    $title = 'AI Assignment Generator - Create Full Assignments in Seconds, Powered by AI';
+    $description = 'Instantly generate high-quality answers for your assignments. Simply paste your questions, adjust the settings, and let AI take care of the rest. It\'s fast, flexible, and designed to enhance your academic workflow.';
 ?>
     <!DOCTYPE html>
     <html lang="en">
