@@ -73,7 +73,7 @@ if ($path == '/') {
     $app_name = 'AI Assignment Generator';
     $og_image = $_ENV['APP_BASE_URL'] . '/images/og-image.png';
     $title = 'AI Assignment Generator - Not Replacing You Indeed Doubling Your Productivity';
-    $description = 'An AI assignment generator that helps you create assignments by typing questions and generating answers using AI."';
+    $description = 'An AI assignment generator that helps you create assignments by typing questions and generating answers using AI.';
 ?>
     <!DOCTYPE html>
     <html lang="en">
