@@ -320,11 +320,11 @@ if ($path == '/') {
                 <form class="grid grid-cols-2 gap-4 mb-6" id="generate-form">
                     <div>
                         <label for="min-words" class="block text-sm text-gray-700 mb-1">Minimum Words</label>
-                        <input type="number" id="min-words" min="10" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-transparent" placeholder="e.g. 300" value="20" required />
+                        <input type="number" id="min-words" min="10" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-transparent" placeholder="e.g. 300" value="10" required />
                     </div>
                     <div>
                         <label for="max-words" class="block text-sm text-gray-700 mb-1">Maximum Words</label>
-                        <input type="number" id="max-words" max="10000" min="10" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-transparent" placeholder="e.g. 500" value="50" required />
+                        <input type="number" id="max-words" max="10000" min="10" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-transparent" placeholder="e.g. 500" value="20" required />
                     </div>
 
                     <button type="submit" class="cursor-pointer bg-green-700 w-max text-white px-6 py-3 rounded-xl">Generate Assignment 🚀</button>
