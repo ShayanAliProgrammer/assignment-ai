@@ -328,7 +328,6 @@ if ($path == '/') {
     header('Connection: keep-alive', replace: true);
 
     require_once __DIR__ . '/load-env.php';
-    if (ob_get_level() == 0) ob_start();
     try {
 
         $client = new \GeminiAPI\Client($_ENV['GEMINI_API_KEY']);
