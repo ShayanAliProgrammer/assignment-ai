@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Allow: /generate
+
 Sitemap: {base_url}/sitemap.xml
