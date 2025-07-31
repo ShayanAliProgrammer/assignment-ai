@@ -304,20 +304,29 @@ if ($path == '/' || $path == '/generate') {
 
                 <div class="pt-8 border-t-2 text-gray-700 text-base space-y-4">
                     <h2 class="text-2xl font-bold text-green-700">How to Use This Assignment Generator</h2>
+
                     <p>
-                        This tool helps you quickly generate well-structured assignment answers. Simply type or paste your questions into the input field at the top. You can also paste multiple questions at once—each line will be treated as a separate entry.
+                        Assign AI is your go-to tool for generating fast, structured, and high-quality assignment content. It’s designed for students, educators, and anyone who needs polished, ready-to-use written material in minutes. There’s no learning curve—just paste, tweak, and go.
                     </p>
+
                     <p>
-                        After entering your questions, adjust the word count sliders to match your assignment requirements. Use the <span class="font-semibold">"Minimum Words"</span> and <span class="font-semibold">"Maximum Words"</span> fields to control how detailed each answer should be.
+                        To begin, paste your assignment question(s) into the input field at the top of the page. You can input a single prompt or multiple questions—just make sure each one is on its own line. The generator will treat each line as a separate entry and process them individually.
                     </p>
+
                     <p>
-                        Click the <span class="font-semibold">"Generate Assignment 🚀"</span> button to begin. You’ll see each question progress in real-time as answers are created. The spinner indicates loading; once completed, a checkmark confirms the response is ready.
+                        Next, choose your preferred response length by adjusting the <span class="font-semibold">"Minimum Words"</span> and <span class="font-semibold">"Maximum Words"</span> sliders. This lets you control how brief or in-depth each response should be, depending on your assignment’s requirements.
                     </p>
+
                     <p>
-                        After processing, the entire assignment is automatically compiled into a downloadable <span class="font-semibold">.doc</span> file. You can easily edit or customize the file further in Microsoft Word or Google Docs.
+                        Click the <span class="font-semibold">"Generate Assignment 🚀"</span> button to start the AI magic. Each question will be processed in real time. You’ll see a loading indicator (a spinner), followed by a checkmark once the answer is ready. This step ensures everything is processed clearly and completely.
                     </p>
+
                     <p>
-                        This tool requires no sign-up, no installations, and is 100% free. Whether you're working late on a deadline or just need a helping hand, Assign AI is here to support your academic productivity.
+                        Once done, Assign AI bundles the responses into a clean <span class="font-semibold">.doc</span> file that’s ready for download. You can open this file in Microsoft Word, Google Docs, or any word processor to review or make final edits.
+                    </p>
+
+                    <p>
+                        Assign AI is completely free, mobile-friendly, and doesn’t require any login or registration. Whether you're on your phone or laptop, it works instantly—no installations, no nonsense.
                     </p>
 
                     <p class='font-semibold'>Overall:</p>
@@ -330,10 +339,11 @@ if ($path == '/' || $path == '/generate') {
                     </ul>
 
                     <p class="text-sm text-yellow-600 italic">
-                        Note: Always review generated content for accuracy before submission. This tool is designed to assist, not replace, your own understanding.
+                        Note: Always double-check your generated content for accuracy, relevance, and academic integrity. This tool is designed to assist your learning—not replace your thinking.
                         Our AI does not design the whole assignment document, it just acts like a ghost writer for you.
                     </p>
                 </div>
+
 
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
