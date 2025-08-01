@@ -314,7 +314,7 @@ if ($path == '/' || $path == '/generate') {
                     </p>
 
                     <p>
-                        Next, choose your preferred response length by adjusting the <span class="font-semibold">"Minimum Words"</span> and <span class="font-semibold">"Maximum Words"</span> sliders. This lets you control how brief or in-depth each response should be, depending on your assignment’s requirements.
+                        Next, choose your preferred response length by adjusting the <span class="font-semibold">"Minimum Words"</span> and <span class="font-semibold">"Maximum Words"</span> inputs. This lets you control how brief or in-depth each response should be, depending on your assignment’s requirements.
                     </p>
 
                     <p>
