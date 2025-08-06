@@ -80,8 +80,13 @@ if ($path == '/' || $path == '/generate') {
 
     $app_name = 'Assign AI';
     $og_image = $_ENV['APP_BASE_URL'] . '/images/og-image.png';
-    $title = 'Assign AI - ' . ($path == '/' ? 'Generate Fully Ready Assignments' : 'Create Full Assignments in Seconds');
-    $description = 'Instantly generate high-quality answers for your assignments. Simply paste your questions, adjust the settings, and let AI take care of the rest. It\'s fast, flexible, and designed to enhance your academic workflow.';
+    $title = 'Assign AI - Generate Fully Ready Assignments';
+    $description = 'Assign AI is your personal homework sidekick. Upload any question, set a word count, and get high-quality, structured answers — instantly downloadable as a DOC file. No logins. No extra fluff. Just smart help, when you need it.';
+
+    if ($path == '/generate') {
+        $title = 'Assign AI - Create Full Assignments in Seconds';
+        $description = 'Instantly generate high-quality answers for your assignments. Simply paste your questions, adjust the settings, and let AI take care of the rest. It\'s fast, flexible, and designed to enhance your academic workflow.';
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
