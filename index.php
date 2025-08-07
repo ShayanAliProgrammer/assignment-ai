@@ -498,14 +498,17 @@ if ($path == '/' || $path == '/generate') {
 
     require_once __DIR__ . '/load-env.php';
     try {
-
-        $client = new \GeminiAPI\Client($_ENV['GEMINI_API_KEY']);
         $questions = json_decode($_GET['questions'] ?? '[]', true);
         $min_words = $_GET['min_words'] ?? '8000';
         $max_words = $_GET['max_words'] ?? '9000';
 
         $system_prompt = file_get_contents(__DIR__ . '/prompts/system.md');
-        $generation_config = (new \GeminiAPI\GenerationConfig())->withMaxOutputTokens(10_00_000);
+        $generation_config = (new \Gemini\Data\GenerationConfig(maxOutputTokens: 10_00_000));
+
+        $client = \Gemini::client($_ENV['GEMINI_API_KEY'])
+            ->generativeModel('gemini-2.0-flash')
+            ->withSystemInstruction(\Gemini\Data\Content::parse(str_replace('{min_words}', $min_words, str_replace('{max_words}', $max_words, $system_prompt))))
+            ->withGenerationConfig($generation_config);
 
         $markdown = '';
         foreach ($questions as $index => $question) {
@@ -516,13 +519,9 @@ if ($path == '/' || $path == '/generate') {
             ob_flush();
             flush();
 
-            $response = $client->withV1BetaVersion()
-                ->generativeModel('gemini-2.0-flash-lite')
-                ->withSystemInstruction(str_replace('{min_words}', $min_words, str_replace('{max_words}', $max_words, $system_prompt)))
-                ->withGenerationConfig($generation_config)
-                ->generateContent(
-                    new \GeminiAPI\Resources\Parts\TextPart("Now provide me the answer for this question, without any talk/conversation (eg; here are the answers, etc...):\nQ{$question_number}. {$safeQuestion}"),
-                );
+            $response = $client->generateContent(
+                new \GeminiAPI\Resources\Parts\TextPart("Now provide me the answer for this question, without any talk/conversation (eg; here are the answers, etc...):\nQ{$question_number}. {$safeQuestion}"),
+            );
 
             $markdown .= $response->text() . "\n\n";
 

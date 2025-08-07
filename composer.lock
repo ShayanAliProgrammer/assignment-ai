@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b4028d1f03eaa60e6564341dd70018b",
+    "content-hash": "8af9f6c09a0c20190eb9f80a415c2380",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -147,6 +147,74 @@
                 "source": "https://github.com/gemini-api-php/client/tree/v1.7.2"
             },
             "time": "2025-01-31T15:31:02+00:00"
+        },
+        {
+            "name": "google-gemini-php/client",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google-gemini-php/client.git",
+                "reference": "ebe8b881dfd15e77fe934cb4d629f4e6a97f8ed6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google-gemini-php/client/zipball/ebe8b881dfd15e77fe934cb4d629f4e6a97f8ed6",
+                "reference": "ebe8b881dfd15e77fe934cb4d629f4e6a97f8ed6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1.0",
+                "php-http/discovery": "^1.19.2",
+                "psr/http-client-implementation": "*",
+                "psr/http-factory-implementation": "*"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.8.1",
+                "guzzlehttp/psr7": "^2.6.2",
+                "laravel/pint": "^1.18.1",
+                "mockery/mockery": "^1.6.7",
+                "pestphp/pest": "^2.30",
+                "phpstan/phpstan": "^1.10"
+            },
+            "suggest": {
+                "ext-fileinfo": "Reads upload file size and mime type if not provided"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Gemini.php"
+                ],
+                "psr-4": {
+                    "Gemini\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fatih AYDIN",
+                    "email": "aydinfatih52@gmail.com"
+                }
+            ],
+            "description": "Gemini API is a supercharged PHP API client that allows you to interact with the Gemini API",
+            "keywords": [
+                "Gemini",
+                "client",
+                "gemini-pro",
+                "language",
+                "natural",
+                "nlp",
+                "php",
+                "processing",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/google-gemini-php/client/issues",
+                "source": "https://github.com/google-gemini-php/client/tree/2.0.0"
+            },
+            "time": "2025-05-09T14:25:03+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1161,16 +1229,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v7.3.1",
+            "version": "v7.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "4403d87a2c16f33345dca93407a8714ee8c05a64"
+                "reference": "1c064a0c67749923483216b081066642751cc2c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/4403d87a2c16f33345dca93407a8714ee8c05a64",
-                "reference": "4403d87a2c16f33345dca93407a8714ee8c05a64",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/1c064a0c67749923483216b081066642751cc2c7",
+                "reference": "1c064a0c67749923483216b081066642751cc2c7",
                 "shasum": ""
             },
             "require": {
@@ -1236,7 +1304,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v7.3.1"
+                "source": "https://github.com/symfony/http-client/tree/v7.3.2"
             },
             "funding": [
                 {
@@ -1248,11 +1316,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-28T07:58:39+00:00"
+            "time": "2025-07-15T11:36:08+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -1743,10 +1815,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
